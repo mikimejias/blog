@@ -7,6 +7,7 @@
   <body>
     <div align="center">
       <h1><?= $mensaje ?></h1>
+      <a href="<?= base_url(); ?>">Mi enlace</a>
     </div>
   </body>
 </html>
