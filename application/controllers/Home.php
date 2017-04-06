@@ -5,6 +5,7 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-    print("Hola mundo");
+    $data = array('title' => 'Home', 'mensaje'=> 'Hola mundo en CodeIgniter' );
+    $this->load->view("home", $data);
 	}
 }
