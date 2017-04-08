@@ -7,7 +7,7 @@
         foreach ($consulta->result() as $fila) {
       ?>
         <div class="post-preview">
-          <a href="post.html">
+          <a href="<?= base_url()?>articulo/obtener_post/<?= $fila->id_post ?>">
             <h2 class="post-title">
               <?= $fila->nombre_post ?>
             </h2>

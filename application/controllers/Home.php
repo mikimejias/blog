@@ -5,6 +5,8 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('post');
+
 		$data = array(
 			'titulo' => 'Home',
 			'nombre_app' => 'Blog',
@@ -16,7 +18,7 @@ class Home extends CI_Controller {
 		$this->load->view("nav", $data);
 		$this->load->view("header", $data);
 
-		$resultado_db = $this->db->get('post');
+		$resultado_db = $this->post->get_posts('post');
 		$data = array('consulta' => $resultado_db );
 
 		$this->load->view("content", $data);
