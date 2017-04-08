@@ -15,6 +15,10 @@ class Home extends CI_Controller {
 		$this->load->view("head", $data);
 		$this->load->view("nav", $data);
 		$this->load->view("header", $data);
+
+		$resultado_db = $this->db->get('post');
+		$data = array('consulta' => $resultado_db );
+
 		$this->load->view("content", $data);
 		$this->load->view("footer", $data);
 	}
