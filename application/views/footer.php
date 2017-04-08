@@ -29,7 +29,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+            <p class="copyright text-muted">Copyright &copy; Miguel Mejias 2017</p>
           </div>
         </div>
       </div>
