@@ -14,18 +14,21 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="index.html">Inicio</a>
+          <a href="<?= base_url()?>">Inicio</a>
         </li>
         <li>
-          <a href="about.html">Acerca de</a>
+          <a href="<?= base_url()?>acerca">Acerca de</a>
         </li>
         <li>
-          <a href="contact.html">Contacto</a>
+          <a href="<?= base_url()?>contacto">Contacto</a>
         </li>
         <?php
         if ($this->session->userdata('login'))
         {
         ?>
+        <li>
+          <a href="<?=base_url()?>perfil/">Perfil</a>
+        </li>
         <li>
           <a href="<?=base_url()?>login/log_out">Cerrar Sesión</a>
         </li>

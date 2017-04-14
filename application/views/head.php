@@ -11,7 +11,9 @@
     <title><?= $titulo ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?= base_url()?>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="<?= base_url()?>libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <?php echo load_bootstrap();?>
 
     <!-- Theme CSS -->
     <link href="<?= base_url()?>libs/css/clean-blog.min.css" rel="stylesheet">

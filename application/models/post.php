@@ -17,6 +17,25 @@ class Post extends CI_Model
     return $resultado->row();
   }
 
+  public function crear_nuevo_post($post =null)
+  {
+    if ($post != null)
+    {
+      $nombre_post = $post['nombre_post'];
+      $descripcion_post = $post['descripcion_post'];
+      $contenido_post = $post['contenido_post'];
+      $img_post = $post['img_post'];
+
+      $SQL = "INSERT INTO post(id_post,	nombre_post, descripcion_post, contenido_post, img_post, fecha_post) VALUES (null, '$nombre_post', '$descripcion_post', '$contenido_post', '$img_post', curdate())";
+
+      if ($this->db->query($SQL))
+      {
+        return true;
+      }
+    }
+    return false
+  }
+
 }
 
 
