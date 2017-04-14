@@ -1,23 +1,29 @@
-
-
 <?php
-
 /**
  *
  */
 class Articulo extends CI_Controller{
 
-  public function obtener_post($id_post='')
+  public function obtener_post($year, $nombre_post)
   {
     $this->load->model('post');
 
-    $fila = $this->post->get_post_by_id($id_post);
+    //$fila = $this->post->get_post_by_id($id_post);
+
+    $fila = $this->post->get_post_by_year_and_name($year, $nombre_post);
+
+    if ($fila == null)
+    {
+      echo "ERROR";
+      return;
+    }
 
     $data = array(
 			'titulo' => $fila->nombre_post,
 			'nombre_app' => 'Blog',
 			'post' => $fila->nombre_post,
 			'descripcion' => $fila->descripcion_post,
+      'img_post'=> $fila->img_post,
       'contenido' => $fila->contenido_post);
 
     $this->load->view("head", $data);
@@ -34,6 +40,7 @@ class Articulo extends CI_Controller{
       'nombre_app' => 'Blog',
       'post' => 'Crear nuevo post',
       'descripcion' => 'Creando un nuevo post',
+      'img_post' => 'home-bg.jpg',
       'mensaje'=> 'Bienvenido a mi página web' );
 
     $this->load->view("head", $data);
@@ -48,6 +55,8 @@ class Articulo extends CI_Controller{
 
   public function crear()
   {
+    $this->load->model('post');
+
     $post =$this->input->post();
 
     $this->load->model('file');

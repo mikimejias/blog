@@ -13,6 +13,7 @@ class Home extends CI_Controller {
 			'nombre_app' => 'Blog',
 			'post' => 'Blog',
 			'descripcion' => 'Bienvenido a mi página web en CodeIgniter',
+			'img_post' => 'home-bg.jpg',
 			'mensaje'=> 'Bienvenido a mi página web' );
 
 		$this->load->view("head", $data);

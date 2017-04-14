@@ -33,7 +33,14 @@ class Post extends CI_Model
         return true;
       }
     }
-    return false
+    return false;
+  }
+
+  public function get_post_by_year_and_name($year='', $nombre_post='')
+  {
+    $resultado = $this->db->query("SELECT * FROM post WHERE year(	fecha_post)= '$year' AND nombre_post LIKE '$nombre_post'");
+
+    return $resultado->row();
   }
 
 }

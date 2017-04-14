@@ -7,7 +7,13 @@
         foreach ($consulta->result() as $fila) {
       ?>
         <div class="post-preview">
-          <a href="<?= base_url()?>articulo/obtener_post/<?= $fila->id_post ?>">
+          <?php
+          $fecha = DateTime::createFromFormat("Y-m-d", $fila->fecha_post);
+          $year = $fecha->format("Y");
+
+          $nombre = str_replace(" ", "_", $fila->nombre_post);
+          ?>
+          <a href="<?= base_url()?>articulo/obtener_post/<?= $year ?>/<?= $nombre ?>">
             <h2 class="post-title">
               <?= $fila->nombre_post ?>
             </h2>
