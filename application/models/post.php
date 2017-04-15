@@ -43,6 +43,18 @@ class Post extends CI_Model
     return $resultado->row();
   }
 
+  public function numero_post()
+  {
+    $numero_post = $this->db->query("SELECT count(*) as numero_post from post")->row()->numero_post;
+
+    return intval($numero_post);
+  }
+
+  public function get_paginacion($numero_por_pagina)
+  {
+    return $this->db->get("post",$numero_por_pagina, $this->uri->segment(3));
+  }
+
 }
 
 
