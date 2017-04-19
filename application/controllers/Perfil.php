@@ -6,8 +6,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   class Perfil extends CI_Controller
   {
 
+    public function __construct()
+    {
+      parent::__construct();
+      /*
+      if (!$this->session->userdata('login'))
+      {
+        header("Location:".base_url());
+      }
+      */
+    }
+
     public function index()
     {
+      $this->load->model('post');
+
       $data = array(
   			'titulo' => 'Perfil',
   			'nombre_app' => 'Blog',
@@ -19,6 +32,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   		$this->load->view("head", $data);
   		$this->load->view("nav", $data);
   		$this->load->view("header", $data);
+
+      //Obteniendo los post de la base de datos
+      $data['posts'] = $this->post->get_posts();
 
   		$this->load->view("content_user", $data);
   		$this->load->view("footer", $data);

@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  *
  */
@@ -16,11 +17,12 @@ class Login extends CI_Controller
 
     if ($usuarioDB != null) {
       if ($usuarioDB->password == $password) {
-        $data_session = array(
+        $data = array(
           'user' => $user,
           'id' => $usuarioDB->id_sesion,
           'login' => true);
-        $this->session->set_userdata($data_session);
+        $this->session->set_userdata($data);
+
       }
       else {
         header("Location:".base_url());

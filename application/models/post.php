@@ -55,6 +55,19 @@ class Post extends CI_Model
     return $this->db->get("post",$numero_por_pagina, $this->uri->segment(3));
   }
 
+  public function borrar_post($id_post)
+  {
+    $SQL = "DELETE FROM post WHERE id_post='".$id_post."'";
+    if($this->db->query($SQL))
+    {
+      echo $id_post;
+    }
+    else
+    {
+      echo false;
+    }
+  }
+
 }
 
 

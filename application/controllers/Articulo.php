@@ -18,6 +18,10 @@ class Articulo extends CI_Controller{
       return;
     }
 
+    if (!isset($fila->img_post) || $fila->img_post == '') {
+      $fila->img_post = 'home-bg.jpg';
+    }
+
     $data = array(
 			'titulo' => $fila->nombre_post,
 			'nombre_app' => 'Blog',
@@ -35,6 +39,12 @@ class Articulo extends CI_Controller{
 
   public function nuevo()
   {
+    /*
+    if (!$this->session->userdata('login'))
+    {
+      header("Location:".base_url());
+    }
+    */
     $data = array(
       'titulo' => 'Crear Nuevo Post',
       'nombre_app' => 'Blog',
@@ -55,6 +65,13 @@ class Articulo extends CI_Controller{
 
   public function crear()
   {
+    /*
+    if (!$this->session->userdata('login'))
+    {
+      header("Location:".base_url());
+    }
+    */
+
     $this->load->model('post');
 
     $post =$this->input->post();
@@ -71,6 +88,18 @@ class Articulo extends CI_Controller{
     else {
       header("Location: ".base_url()."articulo/nuevo");
     }
+  }
+
+  public function borrar_post()
+  {
+    $this->load->model('post');
+
+    $post = $this->input->post();
+
+    //$nombre_post = $post['nombre_post'];
+    $id_post = $post['id_post'];
+
+    $this->post->borrar_post($id_post);
   }
 }
 

@@ -47,6 +47,46 @@
     <!-- Theme JavaScript -->
     <script src="<?= base_url() ?>libs/js/clean-blog.min.js"></script>
 
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("button").on("click", function (e) {
+          var name = $(this).attr('name');
+          var id = $(this).attr('id');
+
+          var request;
+
+          if(request)
+          {
+            request.abort();
+          }
+
+          request = $.ajax({
+            url: "<?= base_url('articulo/borrar_post') ?>",
+            type: "POST",
+            data: "id_post=" + id
+          });
+
+          request.done(function (response, textStatus, jqXHR)
+          {
+            console.log("response:" + response);
+            $("#tr"+response).html("");
+          });
+
+          request.fail(function (jqXHR, textStatus, thrown)
+          {
+            console.log("Error:" + textStatus);
+          });
+
+          request.always(function ()
+          {
+            console.log("Terminó la ejecución de ajax");
+          });
+
+          e.preventDefault();
+        });
+      });
+    </script>
+
   </body>
 
 </html>
